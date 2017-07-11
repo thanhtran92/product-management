@@ -1,7 +1,7 @@
 package com.thanh.model;
 
 /**
- * This is a model class represents a product entity
+ * This is a model class represents a product entity.
  * 
  * @author thanhtran
  *
@@ -19,11 +19,21 @@ public class Product {
         this.id = id;
     }
 
-    public Product(int id, String name, String price) {
+    public Product(String name, String price, String category, String description) {
+        super();
+        this.name = name;
+        this.price = price;
+        this.category = category;
+        this.description = description;
+    }
+
+    public Product(int id, String name, String price, String category, String description) {
         super();
         this.id = id;
         this.name = name;
         this.price = price;
+        this.category = category;
+        this.description = description;
     }
 
     public int getId() {

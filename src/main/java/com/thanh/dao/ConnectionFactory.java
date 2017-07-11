@@ -14,16 +14,21 @@ import com.mysql.jdbc.Driver;
  */
 public class ConnectionFactory {
 
-    public static final String URL = "jdbc:mysql://192.168.1.2:3306/product_management";
-    public static final String USER = "root";
-    public static final String PASS = "888888";
+    private static final String URL = "jdbc:mysql://192.168.1.2:3306/product_management";
+    private static final String USER = "root";
+    private static final String PASS = "888888";
+    private static Connection jdbcConnection;
 
-    public Connection getConnection() {
+    public static Connection connect() {
         try {
-            DriverManager.registerDriver(new Driver());
-            return DriverManager.getConnection(URL, USER, PASS);
+            if (jdbcConnection == null || jdbcConnection.isClosed()) {
+                DriverManager.registerDriver(new Driver());
+                jdbcConnection = DriverManager.getConnection(URL, USER, PASS);
+            }
         } catch (SQLException e) {
             throw new RuntimeException("Error connecting to the database!", e);
         }
+        return jdbcConnection;
     }
+
 }

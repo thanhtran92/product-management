@@ -5,8 +5,8 @@ import java.util.List;
 import com.thanh.model.Product;
 
 /**
- * This DAO class provides CRUD database operations for the product table in the
- * database.
+ * This DAO interface provides CRUD database operations for the product table in
+ * the database.
  * 
  * @author thanhtran
  *
