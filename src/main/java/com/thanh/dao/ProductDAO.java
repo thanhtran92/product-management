@@ -22,4 +22,7 @@ public interface ProductDAO {
     boolean updateProduct(Product p);
 
     boolean deleteProduct(Product p);
+
+    List<Product> getProduct(String searchName, String searchCategory, String searchMinPrice, String searchMaxPrice);
+
 }

@@ -10,36 +10,45 @@
     <h1 align="center">Product Management</h1>
     <div align="center">
         <c:if test="${product == null}">
-            <form action="/product-management/add-product.do" method="post">
+            <form action="add-product.do" method="post">
         </c:if>
         <c:if test="${product != null}">
-            <form action="/product-management/edit-product.do" method="post">
+            <form action="edit-product.do" method="post">
         </c:if>
 
-        <input type="hidden" name="id" value="<c:out value='${product.id}' />" />
+        <input type="hidden" name="id" value="${product.id}" />
 
         <label>Name:</label>
-        <input type="text" name="name" value="<c:out value='${product.name}' />">
+        <input type="text" name="name" value="${product.name}" />
 
         <label>Price:</label>
-        <input type="text" name="price" value="<c:out value='${product.price}' />">
+        <input type="text" name="price" value="${product.price}" />
+
+        <jsp:useBean id="categories" class="java.util.ArrayList"> 
+            <%
+            categories.add("Category 1");
+            categories.add("Category 2");
+            categories.add("Category 3");
+            categories.add("Category 4");
+            %>
+        </jsp:useBean>
 
         <label>Category:</label>
         <select name="category">
-            <option value="Category 1">Category 1</option>
-            <option value="Category 2">Category 2</option>
-            <option value="Category 3">Category 3</option>
+            <c:forEach var="item" items="${categories}">
+                <option value="${item}" ${item == product.category ? 'selected="selected"' : ''}>${item}</option>
+            </c:forEach>
         </select>
 
         <label>Description:</label>
-        <input type="text" name="description" value="<c:out value='${product.description}' />">
+        <input type="text" name="description" value="${product.description}" />
 
-        <input type="submit" value="Save"></input>
+        <br><br>
+        <div align="center">
+            <input type="submit" value="Update / Add New" />
+            <a href="delete-product.do?id=${product.id}">Delete</a>
+        </div>
         </form>
     </div>
-    <h2 align="center">
-        <a href="/product-management/add-product.do">Add new product</a>
-        <a href="/product-management/list-product.do">List all products</a>
-    </h2>
 </body>
 </html>

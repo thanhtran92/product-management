@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.mysql.jdbc.StringUtils;
 import com.thanh.dao.ConnectionFactory;
 import com.thanh.dao.ProductDAO;
 import com.thanh.model.Product;
@@ -148,6 +149,62 @@ public class ProductDAOImpl implements ProductDAO {
         }
 
         return rowDeleted;
+    }
+
+    @Override
+    public List<Product> getProduct(String searchName, String searchCategory, String searchMinPrice, String searchMaxPrice) {
+        List<String> params = new ArrayList<String>();
+        StringBuilder sqlBuilder = new StringBuilder()
+            .append("SELECT * ")
+            .append("FROM product ")
+            .append("WHERE 1=1 ");
+
+        if (!StringUtils.isNullOrEmpty(searchName)) {
+            sqlBuilder.append("AND name LIKE ? ");
+            params.add("%" + searchName + "%");
+        }
+
+        if (!StringUtils.isNullOrEmpty(searchCategory)) {
+            sqlBuilder.append("AND category = ? ");
+            params.add(searchCategory);
+        }
+
+        if (!StringUtils.isNullOrEmpty(searchMinPrice) && !StringUtils.isNullOrEmpty(searchMaxPrice)) {
+            sqlBuilder.append("AND price BETWEEN ? AND ?");
+            params.add(searchMinPrice);
+            params.add(searchMaxPrice);
+        }
+
+        String sql = sqlBuilder.toString() + "ORDER BY name, price";
+
+        List<Product> products = new ArrayList<>();
+        Connection connection = ConnectionFactory.connect();
+
+        try {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            for (int i = 0; i < params.size(); i++) {
+                statement.setString(i + 1, params.get(i));
+            }
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                int ProductId = resultSet.getInt("id");
+                String name = resultSet.getString("name");
+                String price = resultSet.getString("price");
+                String category = resultSet.getString("category");
+                String description = resultSet.getString("description");
+                Product product = new Product(ProductId, name, price, category, description);
+                products.add(product);
+            }
+
+            resultSet.close();
+            statement.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return products;
     }
 
 }

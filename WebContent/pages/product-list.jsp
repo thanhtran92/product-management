@@ -9,6 +9,21 @@
 <body>
     <h1 align="center">Product Management</h1>
     <div align="center">
+        <form action="search-product.do">
+            Name: <input type="text" name="name">
+            Category: <select name="category">
+                <option disabled selected> -- select a category -- </option>
+                <option value="Category 1">Category 1</option>
+                <option value="Category 2">Category 2</option>
+                <option value="Category 3">Category 3</option>
+                <option value="Category 4">Category 4</option>
+            </select>
+            Price from: <input type="number" name="minPrice"> to <input type="number" name="maxPrice">
+            <input type="submit" value="Search">
+        </form>
+    </div>
+    <br><br><br><br><br>
+    <div align="center">
         <table border="1">
             <tr>
                 <th>ID</th>
@@ -16,26 +31,23 @@
                 <th>Price</th>
                 <th>Category</th>
                 <th>Description</th>
-                <th>Actions</th>
             </tr>
             <c:forEach var="product" items="${productList}">
                 <tr>
-                    <td><c:out value="${product.id}" /></td>
-                    <td><c:out value="${product.name}" /></td>
-                    <td><c:out value="${product.price}" /></td>
-                    <td><c:out value="${product.category}" /></td>
-                    <td><c:out value="${product.description}" /></td>
-                    <td>
-                        <a href="/product-management/edit-product.do?id=<c:out value='${product.id}' />">Edit</a>
-                        <a href="/product-management/delete-product.do?id=<c:out value='${product.id}' />">Delete</a>
-                    </td>
+                    <td>${product.id}</td>
+                    <td><a href="edit-product.do?id=${product.id}">${product.name}</a></td>
+                    <td>${product.price}</td>
+                    <td>${product.category}</td>
+                    <td>${product.description}</td>
                 </tr>
             </c:forEach>
         </table>
     </div>
-    <h2 align="center">
-        <a href="/product-management/add-product.do">Add new product</a>
-        <a href="/product-management/list-product.do">List all products</a>
-    </h2>
+    <br><br>
+    <div align="center">
+        <form action="add-product.do">
+            <input type="submit" value="Add New" />
+        </form>
+    </div>
 </body>
 </html>

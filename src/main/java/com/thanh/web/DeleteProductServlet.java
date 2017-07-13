@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.mysql.jdbc.StringUtils;
 import com.thanh.dao.ProductDAO;
 import com.thanh.dao.impl.ProductDAOImpl;
 import com.thanh.model.Product;
@@ -20,8 +21,10 @@ public class DeleteProductServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int id = Integer.parseInt(request.getParameter("id"));
-        productDAO.deleteProduct(new Product(id));
+        String idAsStr = request.getParameter("id");
+        if (!StringUtils.isNullOrEmpty(idAsStr)) {
+            productDAO.deleteProduct(new Product(Integer.parseInt(idAsStr)));
+        }
         response.sendRedirect("/product-management/list-product.do");
     }
 

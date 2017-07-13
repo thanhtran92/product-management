@@ -12,15 +12,21 @@ import javax.servlet.http.HttpServletResponse;
 import com.thanh.dao.ProductDAO;
 import com.thanh.dao.impl.ProductDAOImpl;
 
-@WebServlet(urlPatterns = "/list-product.do")
-public class ListProductServlet extends HttpServlet {
+@WebServlet(urlPatterns = "/search-product.do")
+public class SearchProductServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
     private ProductDAO productDAO = new ProductDAOImpl();
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.setAttribute("productList", productDAO.getAllProducts());
+        String name = request.getParameter("name");
+        String minPrice = request.getParameter("minPrice");
+        String maxPrice = request.getParameter("maxPrice");
+        String category = request.getParameter("category");
+
+        request.setAttribute("productList", productDAO.getProduct(name, category, minPrice, maxPrice));
+
         RequestDispatcher dispatcher = request.getRequestDispatcher("pages/product-list.jsp");
         dispatcher.forward(request, response);
     }

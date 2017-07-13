@@ -6,7 +6,7 @@
   <display-name>product-management</display-name>
 
   <welcome-file-list>
-    <welcome-file>list-product.do</welcome-file>
+    <welcome-file>search-product.do</welcome-file>
   </welcome-file-list>
 
 </web-app>
