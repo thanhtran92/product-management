@@ -14,6 +14,10 @@ public class Product {
     private String category;
     private String description;
 
+    public Product() {
+        super();
+    }
+
     public Product(int id) {
         super();
         this.id = id;

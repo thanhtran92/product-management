@@ -35,7 +35,7 @@ public class AddProductServlet extends HttpServlet {
         Product product = new Product(name, price, category, description);
         productDAO.insertProduct(product);
 
-        response.sendRedirect("/product-management/list-product.do");
+        response.sendRedirect("search-product.do");
     }
 
 }

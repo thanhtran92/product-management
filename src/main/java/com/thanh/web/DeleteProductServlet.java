@@ -25,7 +25,7 @@ public class DeleteProductServlet extends HttpServlet {
         if (!StringUtils.isNullOrEmpty(idAsStr)) {
             productDAO.deleteProduct(new Product(Integer.parseInt(idAsStr)));
         }
-        response.sendRedirect("/product-management/list-product.do");
+        response.sendRedirect("search-product.do");
     }
 
 }

@@ -175,7 +175,7 @@ public class ProductDAOImpl implements ProductDAO {
             params.add(searchMaxPrice);
         }
 
-        String sql = sqlBuilder.toString() + "ORDER BY name, price";
+        String sql = sqlBuilder.toString() + " ORDER BY name, price";
 
         List<Product> products = new ArrayList<>();
         Connection connection = ConnectionFactory.connect();

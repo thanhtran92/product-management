@@ -39,7 +39,7 @@ public class EditProductServlet extends HttpServlet {
         Product product = new Product(id, name, price, category, description);
         productDAO.updateProduct(product);
 
-        response.sendRedirect("/product-management/list-product.do");
+        response.sendRedirect("search-product.do");
     }
 
 }

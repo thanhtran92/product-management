@@ -47,6 +47,8 @@
         <div align="center">
             <input type="submit" value="Update / Add New" />
             <a href="delete-product.do?id=${product.id}">Delete</a>
+            <br><br>
+            <a href="logout.do">Logout</a>
         </div>
         </form>
     </div>
