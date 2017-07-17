@@ -14,7 +14,7 @@ import com.thanh.dao.impl.UserDAOImpl;
 import com.thanh.model.User;
 import com.thanh.web.utils.WebUtils;
 
-@WebServlet(urlPatterns = "/login.do")
+@WebServlet(urlPatterns = "/login")
 public class LoginServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
@@ -40,7 +40,7 @@ public class LoginServlet extends HttpServlet {
             dispatcher.forward(request, response);
         } else {
             request.getSession().setAttribute("username", username);
-            response.sendRedirect("search-product.do");
+            response.sendRedirect("search-product");
         }
     }
 

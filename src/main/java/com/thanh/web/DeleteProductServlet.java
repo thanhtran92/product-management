@@ -13,7 +13,7 @@ import com.thanh.dao.ProductDAO;
 import com.thanh.dao.impl.ProductDAOImpl;
 import com.thanh.model.Product;
 
-@WebServlet(urlPatterns = "/delete-product.do")
+@WebServlet(urlPatterns = "/delete-product")
 public class DeleteProductServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
@@ -25,7 +25,7 @@ public class DeleteProductServlet extends HttpServlet {
         if (!StringUtils.isNullOrEmpty(idAsStr)) {
             productDAO.deleteProduct(new Product(Integer.parseInt(idAsStr)));
         }
-        response.sendRedirect("search-product.do");
+        response.sendRedirect("search-product");
     }
 
 }

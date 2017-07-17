@@ -13,7 +13,7 @@ import com.thanh.dao.ProductDAO;
 import com.thanh.dao.impl.ProductDAOImpl;
 import com.thanh.model.Product;
 
-@WebServlet(urlPatterns = "/add-product.do")
+@WebServlet(urlPatterns = "/add-product")
 public class AddProductServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
@@ -35,7 +35,7 @@ public class AddProductServlet extends HttpServlet {
         Product product = new Product(name, price, category, description);
         productDAO.insertProduct(product);
 
-        response.sendRedirect("search-product.do");
+        response.sendRedirect("search-product");
     }
 
 }

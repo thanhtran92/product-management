@@ -10,7 +10,7 @@
 <body>
     <h1 align="center">Product Management</h1>
     <div align="center">
-        <form action="search-product.do">
+        <form action="search-product">
             Name: <input type="text" name="name">
             Category: <select name="category">
                 <option disabled selected> -- select a category -- </option>
@@ -36,7 +36,7 @@
             <c:forEach var="product" items="${productList}">
                 <tr>
                     <td>${product.id}</td>
-                    <td><a href="edit-product.do?id=${product.id}">${product.name}</a></td>
+                    <td><a href="edit-product?id=${product.id}">${product.name}</a></td>
                     <td>${product.price}</td>
                     <td>${product.category}</td>
                     <td>${product.description}</td>
@@ -46,7 +46,7 @@
     </div>
     <br><br>
     <div align="center">
-        <form action="add-product.do">
+        <form action="add-product">
             <input type="submit" value="Add New" />
         </form>
         <br><br>

@@ -9,7 +9,7 @@
     <h1 align="center">Product Management</h1>
     <h2 align="center">Login</h2>
     <div align="center">
-        <form action="login.do" method="post">
+        <form action="login" method="post">
             <p><font color="red">${errorMessage}</font></p>
             User name: <input type="text" name="username">
             Password: <input type="password" name="password">

@@ -11,10 +11,10 @@
     <div align="center">
         <c:choose>
             <c:when test="${product == null}">
-                <c:set var="formAction" value="add-product.do"/>
+                <c:set var="formAction" value="add-product"/>
             </c:when>
             <c:otherwise>
-                <c:set var="formAction" value="edit-product.do"/>
+                <c:set var="formAction" value="edit-product"/>
             </c:otherwise>
         </c:choose>
 
@@ -49,9 +49,9 @@
             <br><br>
             <div align="center">
                 <input type="submit" value="Update / Add New" />
-                <a href="delete-product.do?id=${product.id}">Delete</a>
+                <a href="delete-product?id=${product.id}">Delete</a>
                 <br><br>
-                <a href="logout.do">Logout</a>
+                <a href="logout">Logout</a>
             </div>
         </form>
     </div>

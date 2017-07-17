@@ -11,7 +11,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 
-@WebFilter(urlPatterns = "*.do")
+@WebFilter(urlPatterns = "/*")
 public class LoginFilter implements Filter {
 
     @Override
@@ -29,7 +29,7 @@ public class LoginFilter implements Filter {
         if (loggedIn) {
             chain.doFilter(request, response);
         } else {
-            request.getRequestDispatcher("/login.do").forward(request, response);
+            request.getRequestDispatcher("/login").forward(request, response);
         }
     }
 
