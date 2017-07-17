@@ -9,4 +9,8 @@
     <welcome-file>login.do</welcome-file>
   </welcome-file-list>
 
+  <listener>
+    <listener-class>com.thanh.listener.SessionListener</listener-class>
+  </listener>
+
 </web-app>
