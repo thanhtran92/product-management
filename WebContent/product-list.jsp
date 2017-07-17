@@ -8,7 +8,9 @@
 <title>Product Management</title>
 </head>
 <body>
-    <h1 align="center">Product Management</h1>
+    <jsp:include page="header.jsp"></jsp:include>
+    <jsp:include page="menu.jsp"></jsp:include>
+    <br><br>
     <div align="center">
         <form action="search-product">
             Name: <input type="text" name="name">
@@ -36,7 +38,14 @@
             <c:forEach var="product" items="${productList}">
                 <tr>
                     <td>${product.id}</td>
-                    <td><a href="edit-product?id=${product.id}">${product.name}</a></td>
+                    <c:choose>
+                        <c:when test="${username == null}">
+                            <td>${product.name}</td>
+                        </c:when>
+                        <c:otherwise>
+                            <td><a href="edit-product?id=${product.id}">${product.name}</a></td>
+                        </c:otherwise>
+                    </c:choose>
                     <td>${product.price}</td>
                     <td>${product.category}</td>
                     <td>${product.description}</td>
@@ -47,10 +56,19 @@
     <br><br>
     <div align="center">
         <form action="add-product">
-            <input type="submit" value="Add New" />
+            <c:choose>
+                <c:when test="${username == null}">
+                    <input type="submit" value="Add New" disabled/>
+                </c:when>
+                <c:otherwise>
+                    <input type="submit" value="Add New" />
+                </c:otherwise>
+            </c:choose>
         </form>
-        <br><br>
+        <br>
         <p>Active sessions: <b><%= SessionListener.getActiveSessions() %></b></p>
     </div>
+    <br><br>
+    <jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

@@ -6,7 +6,8 @@
 <title>Product Management</title>
 </head>
 <body>
-    <h1 align="center">Product Management</h1>
+    <jsp:include page="header.jsp"></jsp:include>
+    <jsp:include page="menu.jsp"></jsp:include>
     <h2 align="center">Login</h2>
     <div align="center">
         <form action="login" method="post">
@@ -16,5 +17,7 @@
             <input type="submit" value="Login">
         </form>
     </div>
+    <br><br>
+    <jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

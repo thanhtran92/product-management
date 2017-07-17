@@ -27,7 +27,7 @@ public class SearchProductServlet extends HttpServlet {
 
         request.setAttribute("productList", productDAO.getProduct(name, category, minPrice, maxPrice));
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("pages/product-list.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("product-list.jsp");
         dispatcher.forward(request, response);
     }
 

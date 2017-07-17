@@ -7,7 +7,9 @@
 <title>Product Management</title>
 </head>
 <body>
-    <h1 align="center">Product Management</h1>
+    <jsp:include page="header.jsp"></jsp:include>
+    <jsp:include page="menu.jsp"></jsp:include>
+    <br><br>
     <div align="center">
         <c:choose>
             <c:when test="${product == null}">
@@ -55,5 +57,7 @@
             </div>
         </form>
     </div>
+    <br><br>
+    <jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

@@ -24,7 +24,7 @@ public class EditProductServlet extends HttpServlet {
         int id = Integer.parseInt(request.getParameter("id"));
         Product product = productDAO.getProduct(id);
         request.setAttribute("product", product);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("pages/product-form.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("product-form.jsp");
         dispatcher.forward(request, response);
     }
 

@@ -22,7 +22,7 @@ public class LoginServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("pages/login.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
         dispatcher.forward(request, response);
     }
 
@@ -36,7 +36,7 @@ public class LoginServlet extends HttpServlet {
 
         if (user == null) {
             request.setAttribute("errorMessage", "Invalid login credentials.");
-            RequestDispatcher dispatcher = request.getRequestDispatcher("pages/login.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
             dispatcher.forward(request, response);
         } else {
             request.getSession().setAttribute("username", username);
