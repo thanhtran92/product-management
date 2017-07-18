@@ -188,12 +188,12 @@ public class ProductDAOImpl implements ProductDAO {
             ResultSet resultSet = statement.executeQuery();
 
             while (resultSet.next()) {
-                int ProductId = resultSet.getInt("id");
+                int id = resultSet.getInt("id");
                 String name = resultSet.getString("name");
                 String price = resultSet.getString("price");
                 String category = resultSet.getString("category");
                 String description = resultSet.getString("description");
-                Product product = new Product(ProductId, name, price, category, description);
+                Product product = new Product(id, name, price, category, description);
                 products.add(product);
             }
 
