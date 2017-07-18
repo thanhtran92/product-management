@@ -1,22 +1,29 @@
 package com.thanh.listener;
 
 import javax.servlet.annotation.WebListener;
-import javax.servlet.http.HttpSessionEvent;
-import javax.servlet.http.HttpSessionListener;
+import javax.servlet.http.HttpSessionAttributeListener;
+import javax.servlet.http.HttpSessionBindingEvent;
 
 @WebListener
-public class SessionListener implements HttpSessionListener {
+public class SessionListener implements HttpSessionAttributeListener {
 
     private static int activeSessions = 0;
 
     @Override
-    public void sessionCreated(HttpSessionEvent se) {
+    public void attributeAdded(HttpSessionBindingEvent event) {
         activeSessions++;
     }
 
     @Override
-    public void sessionDestroyed(HttpSessionEvent se) {
-        activeSessions--;
+    public void attributeRemoved(HttpSessionBindingEvent event) {
+        if (activeSessions > 0) {
+            activeSessions--;
+        }
+    }
+
+    @Override
+    public void attributeReplaced(HttpSessionBindingEvent event) {
+        // TODO Auto-generated method stub
     }
 
     public static int getActiveSessions() {
