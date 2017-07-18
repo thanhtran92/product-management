@@ -9,7 +9,7 @@
 <body>
     <h1 style="text-align:left; float:left;">Product Management</h1>
     <c:choose>
-        <c:when test="${username == null }">
+        <c:when test="${username == null}">
             <p style="text-align:right; float:right;">Hello,</p>
         </c:when>
         <c:otherwise>

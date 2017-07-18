@@ -51,10 +51,13 @@
             <br><br>
             <div align="center">
                 <input type="submit" value="Update / Add New" />
-                <a href="delete-product?id=${product.id}">Delete</a>
-                <br><br>
-                <a href="logout">Logout</a>
             </div>
+        </form>
+
+        <br>
+        <form action="delete-product" method="post">
+            <input type="hidden" name="id" value="${product.id}" />
+            <input type="submit" value="Delete" />
         </form>
     </div>
     <br><br>
